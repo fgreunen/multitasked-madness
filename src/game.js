@@ -5,10 +5,6 @@ export function contributionRate(progress) {
   return (progress / CONFIG.maximumProgress) ** 2 * CONFIG.contributionAtFullPerSecond;
 }
 
-export function decayRate() {
-  return CONFIG.decayPerSecond;
-}
-
 // Integrate progress AND contribution analytically, including cap/zero crossings.
 // Results do not depend on animation frame sizes or refresh rate.
 function rise(progress, seconds, speed, acceleration = 0) {
@@ -57,10 +53,6 @@ export class Game {
     this.elapsed = 0;
     this.activeColumn = null;
     this.heldSeconds = 0;
-    this.focusedSeconds = 0;
-    this.holdCount = 0;
-    this.switches = 0;
-    this.previousColumn = null;
     this.columns = Array.from({ length: CONFIG.columns }, (_, index) => ({ progress: index < this.playableColumns ? CONFIG.startingProgress : 0, contribution: 0 }));
     this.history = [{ time: 0, contribution: 0 }];
   }
@@ -78,10 +70,7 @@ export class Game {
   hold(index) {
     if (this.status !== 'running' || !this.isColumnAvailable(index)) return false;
     if (this.activeColumn === index) return true;
-    if (this.previousColumn !== null && this.previousColumn !== index) this.switches++;
-    this.previousColumn = index;
     this.heldSeconds = 0;
-    this.holdCount++;
     this.activeColumn = index;
     return true;
   }
@@ -116,7 +105,7 @@ export class Game {
         column.progress = next.progress;
         column.contribution += next.area / CONFIG.maximumProgress ** 2 * CONFIG.contributionAtFullPerSecond;
       }
-      if (this.activeColumn !== null) { this.heldSeconds += dt; this.focusedSeconds += dt; }
+      if (this.activeColumn !== null) this.heldSeconds += dt;
       this.elapsed = boundary;
       if (boundary === nextSample) this.history.push({ time: boundary, contribution: this.contribution });
     }
@@ -128,7 +117,6 @@ export class Game {
   }
 
   get contribution() { return this.columns.reduce((sum, column) => sum + column.contribution, 0); }
-  get averageFocusSeconds() { return this.holdCount ? this.focusedSeconds / this.holdCount : 0; }
   get warmupProgress() { return this.activeColumn === null ? 0 : Math.min(1, this.heldSeconds / CONFIG.warmupSeconds); }
   get rate() { return this.columns.reduce((sum, column) => sum + contributionRate(column.progress), 0); }
   get remaining() { return Math.max(0, CONFIG.roundSeconds - this.elapsed); }

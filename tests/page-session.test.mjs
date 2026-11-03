@@ -63,10 +63,14 @@ test('round preparation validates levels and preserves the current round on reje
 test('baseline survives retries, level selection and Level 2 completion', () => {
   const session = new PageSession();
   completeLevel1(session);
-  const baseline = session.level1History.map(point => ({ ...point }));
+  const baseline = session.level1History.map((point) => ({ ...point }));
   assert.deepEqual(session.level1History, session.game.history);
-  assert.throws(() => { session.level1History.at(-1).contribution = -1; }, TypeError);
-  assert.throws(() => { session.level1History.push({ time: 1000, contribution: -1 }); }, TypeError);
+  assert.throws(() => {
+    session.level1History.at(-1).contribution = -1;
+  }, TypeError);
+  assert.throws(() => {
+    session.level1History.push({ time: 1000, contribution: -1 });
+  }, TypeError);
   // Even changes to the old round history cannot alter the saved baseline.
   session.game.history.at(-1).contribution = -1;
   session.game.history.push({ time: 1000, contribution: -1 });
@@ -91,7 +95,7 @@ test('baseline survives retries, level selection and Level 2 completion', () => 
 test('only another completed Level 1 replaces the baseline, and a new session clears progression', () => {
   const session = new PageSession();
   completeLevel1(session);
-  const baseline = session.level1History.map(point => ({ ...point }));
+  const baseline = session.level1History.map((point) => ({ ...point }));
   session.prepareRound();
   session.game.start();
   session.advance(CONFIG.roundSeconds - 1);
