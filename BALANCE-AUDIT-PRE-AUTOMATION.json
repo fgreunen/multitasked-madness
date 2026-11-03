@@ -1,0 +1,2510 @@
+{
+  "methodology": {
+    "seeds": 100,
+    "seedStart": 1,
+    "levels": [
+      1,
+      2
+    ],
+    "strategies": [
+      "maintain-everything",
+      "prioritize",
+      "important-only"
+    ],
+    "horizons": [
+      60,
+      90
+    ],
+    "decisionStepSeconds": 0.1,
+    "safetyHorizonSeconds": 600,
+    "horizonMetricsFreezeAfterEnding": true
+  },
+  "capacity": {
+    "workers": 2,
+    "maxWorkers": 8,
+    "minionsPerUnlock": 1,
+    "maxPerColumn": 3,
+    "multiplier": 2.2,
+    "taskSizes": [
+      {
+        "size": 1,
+        "chance": 0.05,
+        "idealServiceSeconds": 0.5682,
+        "expectedServiceSecondsWithScopeCreep": 0.5871
+      },
+      {
+        "size": 2,
+        "chance": 0.1,
+        "idealServiceSeconds": 1.1364,
+        "expectedServiceSecondsWithScopeCreep": 1.1742
+      },
+      {
+        "size": 3,
+        "chance": 0.2,
+        "idealServiceSeconds": 1.7045,
+        "expectedServiceSecondsWithScopeCreep": 1.7614
+      },
+      {
+        "size": 5,
+        "chance": 0.25,
+        "idealServiceSeconds": 2.8409,
+        "expectedServiceSecondsWithScopeCreep": 2.9356
+      },
+      {
+        "size": 8,
+        "chance": 0.25,
+        "idealServiceSeconds": 4.5455,
+        "expectedServiceSecondsWithScopeCreep": 4.697
+      },
+      {
+        "size": 13,
+        "chance": 0.1,
+        "idealServiceSeconds": 7.3864,
+        "expectedServiceSecondsWithScopeCreep": 7.6326
+      },
+      {
+        "size": 21,
+        "chance": 0.05,
+        "idealServiceSeconds": 11.9318,
+        "expectedServiceSecondsWithScopeCreep": 12.3295
+      }
+    ],
+    "weightedIdealServiceSeconds": 3.6648,
+    "weightedExpectedServiceSecondsWithScopeCreep": 3.7869,
+    "weightedIdealCompletionCeilingPerMinute": 16.37,
+    "weightedExpectedCompletionCeilingPerMinute": 15.84,
+    "upkeepCompletionsPerMinuteByUnlockedSlot": [
+      6,
+      12,
+      18,
+      24,
+      30,
+      36,
+      42,
+      48
+    ]
+  },
+  "summaries": {
+    "maintain-everything": {
+      "1": {
+        "final": {
+          "elapsed": {
+            "mean": 600,
+            "median": 600,
+            "p10": 600,
+            "p90": 600,
+            "min": 600,
+            "max": 600
+          },
+          "delivered": {
+            "mean": 6525.5,
+            "median": 6512,
+            "p10": 6069,
+            "p90": 7004,
+            "min": 5500,
+            "max": 7321
+          },
+          "averageDeliveryRate": {
+            "mean": 652.55,
+            "median": 651.2,
+            "p10": 606.9,
+            "p90": 700.4,
+            "min": 550,
+            "max": 732.1
+          },
+          "completionRate": {
+            "mean": 49.726,
+            "median": 49.8,
+            "p10": 48.3,
+            "p90": 51,
+            "min": 47.2,
+            "max": 51.9
+          },
+          "completed": {
+            "mean": 497.26,
+            "median": 498,
+            "p10": 483,
+            "p90": 510,
+            "min": 472,
+            "max": 519
+          },
+          "important": {
+            "mean": 249.1,
+            "median": 249,
+            "p10": 234,
+            "p90": 265,
+            "min": 221,
+            "max": 274
+          },
+          "failed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "satisfaction": {
+            "mean": 92.08,
+            "median": 92.184,
+            "p10": 80.461,
+            "p90": 101.963,
+            "min": 63.205,
+            "max": 111.648
+          },
+          "maxSlots": {
+            "mean": 8,
+            "median": 8,
+            "p10": 8,
+            "p90": 8,
+            "min": 8,
+            "max": 8
+          },
+          "pending": {
+            "mean": 0.43,
+            "median": 0,
+            "p10": 0,
+            "p90": 2,
+            "min": 0,
+            "max": 8
+          },
+          "unfinished": {
+            "mean": 4.26,
+            "median": 3,
+            "p10": 2,
+            "p90": 9,
+            "min": 1,
+            "max": 11
+          },
+          "peakPending": {
+            "mean": 6.29,
+            "median": 6,
+            "p10": 3,
+            "p90": 10,
+            "min": 2,
+            "max": 17
+          },
+          "averagePending": {
+            "mean": 0.541,
+            "median": 0.369,
+            "p10": 0.124,
+            "p90": 1.077,
+            "min": 0.05,
+            "max": 3.713
+          },
+          "averageWork": {
+            "mean": 3.466,
+            "median": 3.364,
+            "p10": 2.886,
+            "p90": 4.107,
+            "min": 2.603,
+            "max": 4.846
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 242.9,
+                "median": 242,
+                "p10": 198,
+                "p90": 288,
+                "min": 145,
+                "max": 347
+              },
+              "completed": {
+                "mean": 20.5,
+                "median": 20,
+                "p10": 15,
+                "p90": 25,
+                "min": 11,
+                "max": 32
+              },
+              "important": {
+                "mean": 10.77,
+                "median": 11,
+                "p10": 6,
+                "p90": 15,
+                "min": 4,
+                "max": 18
+              },
+              "failed": {
+                "mean": 0,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 0
+              },
+              "satisfaction": {
+                "mean": 15.678,
+                "median": 15.729,
+                "p10": 11.734,
+                "p90": 19.514,
+                "min": 8.337,
+                "max": 24.648
+              },
+              "pending": {
+                "mean": 0.16,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 3
+              },
+              "workCount": {
+                "mean": 1.5,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 3
+              },
+              "unfinished": {
+                "mean": 1.66,
+                "median": 1,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 5
+              },
+              "unlockedSlots": {
+                "mean": 2.89,
+                "median": 3,
+                "p10": 2,
+                "p90": 3,
+                "min": 2,
+                "max": 3
+              }
+            }
+          },
+          "90": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 421.17,
+                "median": 423,
+                "p10": 348,
+                "p90": 499,
+                "min": 293,
+                "max": 562
+              },
+              "completed": {
+                "mean": 35.85,
+                "median": 36,
+                "p10": 29,
+                "p90": 42,
+                "min": 24,
+                "max": 49
+              },
+              "important": {
+                "mean": 20.57,
+                "median": 21,
+                "p10": 15,
+                "p90": 26,
+                "min": 10,
+                "max": 32
+              },
+              "failed": {
+                "mean": 0,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 0
+              },
+              "satisfaction": {
+                "mean": 20.956,
+                "median": 21.685,
+                "p10": 14.901,
+                "p90": 25.593,
+                "min": 11.349,
+                "max": 30.409
+              },
+              "pending": {
+                "mean": 0.23,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 7
+              },
+              "workCount": {
+                "mean": 2.06,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 4
+              },
+              "unfinished": {
+                "mean": 2.29,
+                "median": 2,
+                "p10": 1,
+                "p90": 4,
+                "min": 1,
+                "max": 10
+              },
+              "unlockedSlots": {
+                "mean": 3.99,
+                "median": 4,
+                "p10": 3,
+                "p90": 4,
+                "min": 3,
+                "max": 5
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 100,
+            "reachedPercent": 100
+          }
+        }
+      },
+      "2": {
+        "final": {
+          "elapsed": {
+            "mean": 600,
+            "median": 600,
+            "p10": 600,
+            "p90": 600,
+            "min": 600,
+            "max": 600
+          },
+          "delivered": {
+            "mean": 4642.01,
+            "median": 4590,
+            "p10": 4184,
+            "p90": 5178,
+            "min": 3632,
+            "max": 5550
+          },
+          "averageDeliveryRate": {
+            "mean": 464.201,
+            "median": 459,
+            "p10": 418.4,
+            "p90": 517.8,
+            "min": 363.2,
+            "max": 555
+          },
+          "completionRate": {
+            "mean": 44.522,
+            "median": 44.4,
+            "p10": 42.7,
+            "p90": 46.4,
+            "min": 40.9,
+            "max": 48.5
+          },
+          "completed": {
+            "mean": 445.22,
+            "median": 444,
+            "p10": 427,
+            "p90": 464,
+            "min": 409,
+            "max": 485
+          },
+          "important": {
+            "mean": 224.84,
+            "median": 225,
+            "p10": 208,
+            "p90": 242,
+            "min": 185,
+            "max": 255
+          },
+          "failed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "satisfaction": {
+            "mean": 38.539,
+            "median": 37.412,
+            "p10": 22.369,
+            "p90": 55.563,
+            "min": 5.899,
+            "max": 69.353
+          },
+          "maxSlots": {
+            "mean": 8,
+            "median": 8,
+            "p10": 8,
+            "p90": 8,
+            "min": 8,
+            "max": 8
+          },
+          "pending": {
+            "mean": 38.35,
+            "median": 38,
+            "p10": 20,
+            "p90": 55,
+            "min": 10,
+            "max": 71
+          },
+          "unfinished": {
+            "mean": 40.31,
+            "median": 40,
+            "p10": 22,
+            "p90": 57,
+            "min": 12,
+            "max": 73
+          },
+          "peakPending": {
+            "mean": 40.88,
+            "median": 42,
+            "p10": 24,
+            "p90": 57,
+            "min": 13,
+            "max": 72
+          },
+          "averagePending": {
+            "mean": 13.873,
+            "median": 14.162,
+            "p10": 7.862,
+            "p90": 18.521,
+            "min": 3.935,
+            "max": 28.933
+          },
+          "averageWork": {
+            "mean": 1.833,
+            "median": 1.832,
+            "p10": 1.813,
+            "p90": 1.852,
+            "min": 1.8,
+            "max": 1.876
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 250.65,
+                "median": 252,
+                "p10": 194,
+                "p90": 305,
+                "min": 148,
+                "max": 391
+              },
+              "completed": {
+                "mean": 20.98,
+                "median": 21,
+                "p10": 16,
+                "p90": 26,
+                "min": 10,
+                "max": 35
+              },
+              "important": {
+                "mean": 11.38,
+                "median": 11,
+                "p10": 7,
+                "p90": 16,
+                "min": 3,
+                "max": 19
+              },
+              "failed": {
+                "mean": 0,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 0
+              },
+              "satisfaction": {
+                "mean": 16.066,
+                "median": 15.904,
+                "p10": 12.218,
+                "p90": 19.933,
+                "min": 7.148,
+                "max": 26.702
+              },
+              "pending": {
+                "mean": 0.26,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 3
+              },
+              "workCount": {
+                "mean": 1.54,
+                "median": 2,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 1.8,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 5
+              },
+              "unlockedSlots": {
+                "mean": 2.9,
+                "median": 3,
+                "p10": 2,
+                "p90": 3,
+                "min": 2,
+                "max": 4
+              }
+            }
+          },
+          "90": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 440.02,
+                "median": 440,
+                "p10": 369,
+                "p90": 512,
+                "min": 267,
+                "max": 649
+              },
+              "completed": {
+                "mean": 37.1,
+                "median": 37,
+                "p10": 30,
+                "p90": 44,
+                "min": 21,
+                "max": 54
+              },
+              "important": {
+                "mean": 21.39,
+                "median": 21,
+                "p10": 16,
+                "p90": 27,
+                "min": 11,
+                "max": 30
+              },
+              "failed": {
+                "mean": 0,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 0
+              },
+              "satisfaction": {
+                "mean": 21.88,
+                "median": 22.03,
+                "p10": 17.153,
+                "p90": 26.597,
+                "min": 10.691,
+                "max": 32.123
+              },
+              "pending": {
+                "mean": 0.31,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 4
+              },
+              "workCount": {
+                "mean": 1.68,
+                "median": 2,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 1.99,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 6
+              },
+              "unlockedSlots": {
+                "mean": 4.07,
+                "median": 4,
+                "p10": 4,
+                "p90": 5,
+                "min": 3,
+                "max": 5
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 100,
+            "reachedPercent": 100
+          }
+        }
+      }
+    },
+    "prioritize": {
+      "1": {
+        "final": {
+          "elapsed": {
+            "mean": 600,
+            "median": 600,
+            "p10": 600,
+            "p90": 600,
+            "min": 600,
+            "max": 600
+          },
+          "delivered": {
+            "mean": 6334.27,
+            "median": 6319,
+            "p10": 5944,
+            "p90": 6728,
+            "min": 5732,
+            "max": 7538
+          },
+          "averageDeliveryRate": {
+            "mean": 633.427,
+            "median": 631.9,
+            "p10": 594.4,
+            "p90": 672.8,
+            "min": 573.2,
+            "max": 753.8
+          },
+          "completionRate": {
+            "mean": 49.12,
+            "median": 49.1,
+            "p10": 47.7,
+            "p90": 50.4,
+            "min": 46.9,
+            "max": 51.9
+          },
+          "completed": {
+            "mean": 491.2,
+            "median": 491,
+            "p10": 477,
+            "p90": 504,
+            "min": 469,
+            "max": 519
+          },
+          "important": {
+            "mean": 249.88,
+            "median": 248,
+            "p10": 236,
+            "p90": 264,
+            "min": 222,
+            "max": 281
+          },
+          "failed": {
+            "mean": 5.11,
+            "median": 5,
+            "p10": 1,
+            "p90": 9,
+            "min": 0,
+            "max": 16
+          },
+          "satisfaction": {
+            "mean": 86.271,
+            "median": 86.334,
+            "p10": 75.279,
+            "p90": 95.861,
+            "min": 69.62,
+            "max": 102.396
+          },
+          "maxSlots": {
+            "mean": 8,
+            "median": 8,
+            "p10": 8,
+            "p90": 8,
+            "min": 8,
+            "max": 8
+          },
+          "pending": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "unfinished": {
+            "mean": 3.04,
+            "median": 3,
+            "p10": 2,
+            "p90": 5,
+            "min": 1,
+            "max": 7
+          },
+          "peakPending": {
+            "mean": 2.27,
+            "median": 2,
+            "p10": 1,
+            "p90": 4,
+            "min": 1,
+            "max": 5
+          },
+          "averagePending": {
+            "mean": 0.076,
+            "median": 0.056,
+            "p10": 0.025,
+            "p90": 0.155,
+            "min": 0.021,
+            "max": 0.372
+          },
+          "averageWork": {
+            "mean": 2.613,
+            "median": 2.582,
+            "p10": 2.396,
+            "p90": 2.832,
+            "min": 2.237,
+            "max": 3.172
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 244.47,
+                "median": 245,
+                "p10": 189,
+                "p90": 294,
+                "min": 166,
+                "max": 345
+              },
+              "completed": {
+                "mean": 20.48,
+                "median": 21,
+                "p10": 15,
+                "p90": 25,
+                "min": 13,
+                "max": 30
+              },
+              "important": {
+                "mean": 11.35,
+                "median": 11,
+                "p10": 7,
+                "p90": 16,
+                "min": 4,
+                "max": 18
+              },
+              "failed": {
+                "mean": 0.11,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 1
+              },
+              "satisfaction": {
+                "mean": 15.607,
+                "median": 15.724,
+                "p10": 11.377,
+                "p90": 19.677,
+                "min": 8.765,
+                "max": 22.667
+              },
+              "pending": {
+                "mean": 0.15,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 2
+              },
+              "workCount": {
+                "mean": 1.38,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 3
+              },
+              "unfinished": {
+                "mean": 1.53,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 4
+              },
+              "unlockedSlots": {
+                "mean": 2.83,
+                "median": 3,
+                "p10": 2,
+                "p90": 3,
+                "min": 2,
+                "max": 3
+              }
+            }
+          },
+          "90": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 424.91,
+                "median": 419,
+                "p10": 339,
+                "p90": 506,
+                "min": 296,
+                "max": 581
+              },
+              "completed": {
+                "mean": 36.04,
+                "median": 36,
+                "p10": 29,
+                "p90": 43,
+                "min": 24,
+                "max": 50
+              },
+              "important": {
+                "mean": 21.14,
+                "median": 21,
+                "p10": 16,
+                "p90": 26,
+                "min": 12,
+                "max": 31
+              },
+              "failed": {
+                "mean": 0.19,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 2
+              },
+              "satisfaction": {
+                "mean": 21.034,
+                "median": 21.344,
+                "p10": 15.849,
+                "p90": 26.02,
+                "min": 11.663,
+                "max": 30.276
+              },
+              "pending": {
+                "mean": 0.04,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 1
+              },
+              "workCount": {
+                "mean": 1.78,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 4
+              },
+              "unfinished": {
+                "mean": 1.82,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 5
+              },
+              "unlockedSlots": {
+                "mean": 3.98,
+                "median": 4,
+                "p10": 3,
+                "p90": 5,
+                "min": 3,
+                "max": 5
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 100,
+            "reachedPercent": 100
+          }
+        }
+      },
+      "2": {
+        "final": {
+          "elapsed": {
+            "mean": 600,
+            "median": 600,
+            "p10": 600,
+            "p90": 600,
+            "min": 600,
+            "max": 600
+          },
+          "delivered": {
+            "mean": 4505.35,
+            "median": 4539,
+            "p10": 3896,
+            "p90": 5037,
+            "min": 3566,
+            "max": 5554
+          },
+          "averageDeliveryRate": {
+            "mean": 450.535,
+            "median": 453.9,
+            "p10": 389.6,
+            "p90": 503.7,
+            "min": 356.6,
+            "max": 555.4
+          },
+          "completionRate": {
+            "mean": 44.129,
+            "median": 44,
+            "p10": 42.2,
+            "p90": 46.2,
+            "min": 40.7,
+            "max": 47.7
+          },
+          "completed": {
+            "mean": 441.29,
+            "median": 440,
+            "p10": 422,
+            "p90": 462,
+            "min": 407,
+            "max": 477
+          },
+          "important": {
+            "mean": 223.57,
+            "median": 223,
+            "p10": 207,
+            "p90": 240,
+            "min": 188,
+            "max": 259
+          },
+          "failed": {
+            "mean": 0.17,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 2
+          },
+          "satisfaction": {
+            "mean": 35.764,
+            "median": 36.089,
+            "p10": 17.438,
+            "p90": 51.926,
+            "min": 7.72,
+            "max": 68.853
+          },
+          "maxSlots": {
+            "mean": 8,
+            "median": 8,
+            "p10": 8,
+            "p90": 8,
+            "min": 8,
+            "max": 8
+          },
+          "pending": {
+            "mean": 40.59,
+            "median": 40,
+            "p10": 25,
+            "p90": 58,
+            "min": 8,
+            "max": 67
+          },
+          "unfinished": {
+            "mean": 42.55,
+            "median": 42,
+            "p10": 27,
+            "p90": 60,
+            "min": 10,
+            "max": 69
+          },
+          "peakPending": {
+            "mean": 42.94,
+            "median": 43,
+            "p10": 28,
+            "p90": 59,
+            "min": 15,
+            "max": 70
+          },
+          "averagePending": {
+            "mean": 15.236,
+            "median": 15.518,
+            "p10": 8.105,
+            "p90": 21.35,
+            "min": 5.158,
+            "max": 27.694
+          },
+          "averageWork": {
+            "mean": 1.825,
+            "median": 1.822,
+            "p10": 1.805,
+            "p90": 1.847,
+            "min": 1.787,
+            "max": 1.869
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 248.04,
+                "median": 240,
+                "p10": 190,
+                "p90": 301,
+                "min": 165,
+                "max": 389
+              },
+              "completed": {
+                "mean": 20.65,
+                "median": 20,
+                "p10": 15,
+                "p90": 26,
+                "min": 11,
+                "max": 33
+              },
+              "important": {
+                "mean": 11.29,
+                "median": 11,
+                "p10": 7,
+                "p90": 16,
+                "min": 5,
+                "max": 21
+              },
+              "failed": {
+                "mean": 0.15,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 1
+              },
+              "satisfaction": {
+                "mean": 15.813,
+                "median": 15.388,
+                "p10": 11.674,
+                "p90": 20.161,
+                "min": 7.807,
+                "max": 24.717
+              },
+              "pending": {
+                "mean": 0.11,
+                "median": 0,
+                "p10": 0,
+                "p90": 0,
+                "min": 0,
+                "max": 3
+              },
+              "workCount": {
+                "mean": 1.33,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 1.44,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 5
+              },
+              "unlockedSlots": {
+                "mean": 2.89,
+                "median": 3,
+                "p10": 2,
+                "p90": 3,
+                "min": 2,
+                "max": 4
+              }
+            }
+          },
+          "90": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 429.3,
+                "median": 421,
+                "p10": 358,
+                "p90": 502,
+                "min": 290,
+                "max": 585
+              },
+              "completed": {
+                "mean": 36.1,
+                "median": 36,
+                "p10": 30,
+                "p90": 43,
+                "min": 22,
+                "max": 50
+              },
+              "important": {
+                "mean": 21.36,
+                "median": 21,
+                "p10": 16,
+                "p90": 27,
+                "min": 11,
+                "max": 33
+              },
+              "failed": {
+                "mean": 0.17,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 2
+              },
+              "satisfaction": {
+                "mean": 21.078,
+                "median": 20.873,
+                "p10": 16.912,
+                "p90": 26.034,
+                "min": 11.361,
+                "max": 28.736
+              },
+              "pending": {
+                "mean": 0.26,
+                "median": 0,
+                "p10": 0,
+                "p90": 1,
+                "min": 0,
+                "max": 3
+              },
+              "workCount": {
+                "mean": 1.68,
+                "median": 2,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 1.94,
+                "median": 2,
+                "p10": 1,
+                "p90": 3,
+                "min": 1,
+                "max": 5
+              },
+              "unlockedSlots": {
+                "mean": 4.06,
+                "median": 4,
+                "p10": 4,
+                "p90": 5,
+                "min": 3,
+                "max": 5
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 100,
+            "reachedPercent": 100
+          }
+        }
+      }
+    },
+    "important-only": {
+      "1": {
+        "final": {
+          "elapsed": {
+            "mean": 119.582,
+            "median": 120,
+            "p10": 60,
+            "p90": 176.752,
+            "min": 60,
+            "max": 191.751
+          },
+          "delivered": {
+            "mean": 110.68,
+            "median": 72,
+            "p10": 14,
+            "p90": 257,
+            "min": 8,
+            "max": 333
+          },
+          "averageDeliveryRate": {
+            "mean": 46.74,
+            "median": 35.5,
+            "p10": 14,
+            "p90": 91.9,
+            "min": 8,
+            "max": 132.8
+          },
+          "completionRate": {
+            "mean": 4.536,
+            "median": 3.5,
+            "p10": 1,
+            "p90": 9.1,
+            "min": 1,
+            "max": 12.4
+          },
+          "completed": {
+            "mean": 10.96,
+            "median": 7,
+            "p10": 1,
+            "p90": 25,
+            "min": 1,
+            "max": 34
+          },
+          "important": {
+            "mean": 10.96,
+            "median": 7,
+            "p10": 1,
+            "p90": 25,
+            "min": 1,
+            "max": 34
+          },
+          "failed": {
+            "mean": 10.29,
+            "median": 8,
+            "p10": 4,
+            "p90": 19,
+            "min": 2,
+            "max": 25
+          },
+          "satisfaction": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "maxSlots": {
+            "mean": 1.63,
+            "median": 1,
+            "p10": 1,
+            "p90": 3,
+            "min": 1,
+            "max": 3
+          },
+          "pending": {
+            "mean": 22.51,
+            "median": 19,
+            "p10": 10,
+            "p90": 39,
+            "min": 8,
+            "max": 53
+          },
+          "unfinished": {
+            "mean": 24.07,
+            "median": 20,
+            "p10": 11,
+            "p90": 40,
+            "min": 9,
+            "max": 55
+          },
+          "peakPending": {
+            "mean": 22.68,
+            "median": 19,
+            "p10": 10,
+            "p90": 39,
+            "min": 8,
+            "max": 53
+          },
+          "averagePending": {
+            "mean": 8.123,
+            "median": 6.506,
+            "p10": 3.878,
+            "p90": 14.329,
+            "min": 2.825,
+            "max": 19.482
+          },
+          "averageWork": {
+            "mean": 1.189,
+            "median": 1,
+            "p10": 1,
+            "p90": 1.635,
+            "min": 1,
+            "max": 1.992
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 43.71,
+                "median": 36,
+                "p10": 14,
+                "p90": 81,
+                "min": 8,
+                "max": 186
+              },
+              "completed": {
+                "mean": 3.92,
+                "median": 3,
+                "p10": 1,
+                "p90": 7,
+                "min": 1,
+                "max": 16
+              },
+              "important": {
+                "mean": 3.92,
+                "median": 3,
+                "p10": 1,
+                "p90": 7,
+                "min": 1,
+                "max": 16
+              },
+              "failed": {
+                "mean": 4.15,
+                "median": 4,
+                "p10": 3,
+                "p90": 6,
+                "min": 1,
+                "max": 7
+              },
+              "satisfaction": {
+                "mean": 2.894,
+                "median": 2,
+                "p10": 0,
+                "p90": 6,
+                "min": 0,
+                "max": 13.021
+              },
+              "pending": {
+                "mean": 7.13,
+                "median": 7,
+                "p10": 4,
+                "p90": 10,
+                "min": 0,
+                "max": 11
+              },
+              "workCount": {
+                "mean": 1.02,
+                "median": 1,
+                "p10": 1,
+                "p90": 1,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 8.15,
+                "median": 8,
+                "p10": 5,
+                "p90": 11,
+                "min": 1,
+                "max": 12
+              },
+              "unlockedSlots": {
+                "mean": 1.03,
+                "median": 1,
+                "p10": 1,
+                "p90": 1,
+                "min": 1,
+                "max": 2
+              }
+            }
+          },
+          "90": {
+            "alive": 67,
+            "alivePercent": 67,
+            "metrics": {
+              "delivered": {
+                "mean": 69.43,
+                "median": 58,
+                "p10": 14,
+                "p90": 154,
+                "min": 8,
+                "max": 284
+              },
+              "completed": {
+                "mean": 6.46,
+                "median": 6,
+                "p10": 1,
+                "p90": 15,
+                "min": 1,
+                "max": 24
+              },
+              "important": {
+                "mean": 6.46,
+                "median": 6,
+                "p10": 1,
+                "p90": 15,
+                "min": 1,
+                "max": 24
+              },
+              "failed": {
+                "mean": 5.52,
+                "median": 5,
+                "p10": 4,
+                "p90": 7,
+                "min": 2,
+                "max": 10
+              },
+              "satisfaction": {
+                "mean": 2.734,
+                "median": 2,
+                "p10": 0,
+                "p90": 7.848,
+                "min": 0,
+                "max": 12.274
+              },
+              "pending": {
+                "mean": 12.4,
+                "median": 13,
+                "p10": 7,
+                "p90": 16,
+                "min": 2,
+                "max": 19
+              },
+              "workCount": {
+                "mean": 1.14,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 3
+              },
+              "unfinished": {
+                "mean": 13.54,
+                "median": 14,
+                "p10": 8,
+                "p90": 17,
+                "min": 3,
+                "max": 20
+              },
+              "unlockedSlots": {
+                "mean": 1.22,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 3
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 59,
+            "reachedPercent": 59
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 42,
+            "reachedPercent": 42
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 9,
+            "reachedPercent": 9
+          }
+        }
+      },
+      "2": {
+        "final": {
+          "elapsed": {
+            "mean": 125.321,
+            "median": 120,
+            "p10": 60,
+            "p90": 182.705,
+            "min": 60,
+            "max": 207.591
+          },
+          "delivered": {
+            "mean": 116.02,
+            "median": 82,
+            "p10": 14,
+            "p90": 246,
+            "min": 8,
+            "max": 323
+          },
+          "averageDeliveryRate": {
+            "mean": 47.38,
+            "median": 38.8,
+            "p10": 14,
+            "p90": 87.1,
+            "min": 8,
+            "max": 124.3
+          },
+          "completionRate": {
+            "mean": 4.65,
+            "median": 3.7,
+            "p10": 1,
+            "p90": 8.3,
+            "min": 1,
+            "max": 11
+          },
+          "completed": {
+            "mean": 11.58,
+            "median": 8,
+            "p10": 1,
+            "p90": 24,
+            "min": 1,
+            "max": 32
+          },
+          "important": {
+            "mean": 11.58,
+            "median": 8,
+            "p10": 1,
+            "p90": 24,
+            "min": 1,
+            "max": 32
+          },
+          "failed": {
+            "mean": 9.65,
+            "median": 9,
+            "p10": 4,
+            "p90": 16,
+            "min": 3,
+            "max": 20
+          },
+          "satisfaction": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "maxSlots": {
+            "mean": 1.71,
+            "median": 1,
+            "p10": 1,
+            "p90": 3,
+            "min": 1,
+            "max": 3
+          },
+          "pending": {
+            "mean": 26.02,
+            "median": 24,
+            "p10": 10,
+            "p90": 42,
+            "min": 8,
+            "max": 67
+          },
+          "unfinished": {
+            "mean": 27.43,
+            "median": 25,
+            "p10": 11,
+            "p90": 44,
+            "min": 9,
+            "max": 68
+          },
+          "peakPending": {
+            "mean": 26.15,
+            "median": 24,
+            "p10": 10,
+            "p90": 42,
+            "min": 8,
+            "max": 67
+          },
+          "averagePending": {
+            "mean": 9.502,
+            "median": 8.22,
+            "p10": 4.006,
+            "p90": 16.114,
+            "min": 2.809,
+            "max": 24.589
+          },
+          "averageWork": {
+            "mean": 1.149,
+            "median": 1,
+            "p10": 1,
+            "p90": 1.405,
+            "min": 1,
+            "max": 1.623
+          }
+        },
+        "horizons": {
+          "60": {
+            "alive": 100,
+            "alivePercent": 100,
+            "metrics": {
+              "delivered": {
+                "mean": 45.05,
+                "median": 39,
+                "p10": 14,
+                "p90": 79,
+                "min": 8,
+                "max": 140
+              },
+              "completed": {
+                "mean": 4.02,
+                "median": 4,
+                "p10": 1,
+                "p90": 6,
+                "min": 1,
+                "max": 12
+              },
+              "important": {
+                "mean": 4.02,
+                "median": 4,
+                "p10": 1,
+                "p90": 6,
+                "min": 1,
+                "max": 12
+              },
+              "failed": {
+                "mean": 4.15,
+                "median": 4,
+                "p10": 3,
+                "p90": 5,
+                "min": 2,
+                "max": 8
+              },
+              "satisfaction": {
+                "mean": 2.987,
+                "median": 3,
+                "p10": 0,
+                "p90": 5,
+                "min": 0,
+                "max": 10.345
+              },
+              "pending": {
+                "mean": 7.01,
+                "median": 7,
+                "p10": 4,
+                "p90": 9,
+                "min": 1,
+                "max": 11
+              },
+              "workCount": {
+                "mean": 1.04,
+                "median": 1,
+                "p10": 1,
+                "p90": 1,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 8.05,
+                "median": 8,
+                "p10": 6,
+                "p90": 10,
+                "min": 3,
+                "max": 12
+              },
+              "unlockedSlots": {
+                "mean": 1.04,
+                "median": 1,
+                "p10": 1,
+                "p90": 1,
+                "min": 1,
+                "max": 2
+              }
+            }
+          },
+          "90": {
+            "alive": 73,
+            "alivePercent": 73,
+            "metrics": {
+              "delivered": {
+                "mean": 64.65,
+                "median": 58,
+                "p10": 14,
+                "p90": 118,
+                "min": 8,
+                "max": 214
+              },
+              "completed": {
+                "mean": 6.06,
+                "median": 6,
+                "p10": 1,
+                "p90": 10,
+                "min": 1,
+                "max": 19
+              },
+              "important": {
+                "mean": 6.06,
+                "median": 6,
+                "p10": 1,
+                "p90": 10,
+                "min": 1,
+                "max": 19
+              },
+              "failed": {
+                "mean": 5.45,
+                "median": 5,
+                "p10": 4,
+                "p90": 7,
+                "min": 3,
+                "max": 9
+              },
+              "satisfaction": {
+                "mean": 2.307,
+                "median": 1.769,
+                "p10": 0,
+                "p90": 5.303,
+                "min": 0,
+                "max": 12.107
+              },
+              "pending": {
+                "mean": 13.48,
+                "median": 14,
+                "p10": 9,
+                "p90": 17,
+                "min": 2,
+                "max": 18
+              },
+              "workCount": {
+                "mean": 1.07,
+                "median": 1,
+                "p10": 1,
+                "p90": 1,
+                "min": 1,
+                "max": 2
+              },
+              "unfinished": {
+                "mean": 14.55,
+                "median": 15,
+                "p10": 10,
+                "p90": 18,
+                "min": 4,
+                "max": 19
+              },
+              "unlockedSlots": {
+                "mean": 1.15,
+                "median": 1,
+                "p10": 1,
+                "p90": 2,
+                "min": 1,
+                "max": 3
+              }
+            }
+          }
+        },
+        "phaseReach": {
+          "30": {
+            "label": "Competing demands",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "60": {
+            "label": "Attention stretched",
+            "reached": 100,
+            "reachedPercent": 100
+          },
+          "100": {
+            "label": "Difficult tradeoffs",
+            "reached": 67,
+            "reachedPercent": 67
+          },
+          "140": {
+            "label": "Very little breathing room",
+            "reached": 45,
+            "reachedPercent": 45
+          },
+          "180": {
+            "label": "Relentless demands",
+            "reached": 13,
+            "reachedPercent": 13
+          }
+        }
+      }
+    }
+  },
+  "pairedEffects": {
+    "policy": [
+      {
+        "left": "prioritize",
+        "right": "maintain-everything",
+        "difference": "prioritize minus maintain-everything",
+        "context": "level 1",
+        "metrics": {
+          "elapsed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0,
+            "higherPercent": 0,
+            "equalPercent": 100,
+            "lowerPercent": 0
+          },
+          "delivered": {
+            "mean": -191.23,
+            "median": -202,
+            "p10": -833,
+            "p90": 473,
+            "min": -1380,
+            "max": 1057,
+            "higherPercent": 37,
+            "equalPercent": 1,
+            "lowerPercent": 62
+          },
+          "averageDeliveryRate": {
+            "mean": -19.123,
+            "median": -20.2,
+            "p10": -83.3,
+            "p90": 47.3,
+            "min": -138,
+            "max": 105.7,
+            "higherPercent": 37,
+            "equalPercent": 1,
+            "lowerPercent": 62
+          },
+          "completionRate": {
+            "mean": -0.606,
+            "median": -0.5,
+            "p10": -2.5,
+            "p90": 1,
+            "min": -4.7,
+            "max": 2.3,
+            "higherPercent": 35,
+            "equalPercent": 5,
+            "lowerPercent": 60
+          },
+          "completed": {
+            "mean": -6.06,
+            "median": -5,
+            "p10": -25,
+            "p90": 10,
+            "min": -47,
+            "max": 23,
+            "higherPercent": 35,
+            "equalPercent": 5,
+            "lowerPercent": 60
+          },
+          "failed": {
+            "mean": 5.11,
+            "median": 5,
+            "p10": 1,
+            "p90": 9,
+            "min": 0,
+            "max": 16,
+            "higherPercent": 98,
+            "equalPercent": 2,
+            "lowerPercent": 0
+          },
+          "unfinished": {
+            "mean": -1.22,
+            "median": -1,
+            "p10": -6,
+            "p90": 2,
+            "min": -9,
+            "max": 4,
+            "higherPercent": 30,
+            "equalPercent": 20,
+            "lowerPercent": 50
+          }
+        }
+      },
+      {
+        "left": "important-only",
+        "right": "prioritize",
+        "difference": "important-only minus prioritize",
+        "context": "level 1",
+        "metrics": {
+          "elapsed": {
+            "mean": -480.418,
+            "median": -480,
+            "p10": -540,
+            "p90": -423.248,
+            "min": -540,
+            "max": -408.249,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "delivered": {
+            "mean": -6223.59,
+            "median": -6189,
+            "p10": -6645,
+            "p90": -5839,
+            "min": -7371,
+            "max": -5594,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "averageDeliveryRate": {
+            "mean": -586.687,
+            "median": -588,
+            "p10": -641.9,
+            "p90": -528.2,
+            "min": -701,
+            "max": -458.6,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completionRate": {
+            "mean": -44.584,
+            "median": -45.1,
+            "p10": -48.2,
+            "p90": -39.9,
+            "min": -49.1,
+            "max": -37.5,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completed": {
+            "mean": -480.24,
+            "median": -481,
+            "p10": -498,
+            "p90": -462,
+            "min": -503,
+            "max": -447,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "failed": {
+            "mean": 5.18,
+            "median": 4,
+            "p10": -1,
+            "p90": 14,
+            "min": -5,
+            "max": 20,
+            "higherPercent": 75,
+            "equalPercent": 4,
+            "lowerPercent": 21
+          },
+          "unfinished": {
+            "mean": 21.03,
+            "median": 18,
+            "p10": 8,
+            "p90": 37,
+            "min": 4,
+            "max": 51,
+            "higherPercent": 100,
+            "equalPercent": 0,
+            "lowerPercent": 0
+          }
+        }
+      },
+      {
+        "left": "prioritize",
+        "right": "maintain-everything",
+        "difference": "prioritize minus maintain-everything",
+        "context": "level 2",
+        "metrics": {
+          "elapsed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0,
+            "higherPercent": 0,
+            "equalPercent": 100,
+            "lowerPercent": 0
+          },
+          "delivered": {
+            "mean": -136.66,
+            "median": -99,
+            "p10": -891,
+            "p90": 541,
+            "min": -1749,
+            "max": 1356,
+            "higherPercent": 45,
+            "equalPercent": 1,
+            "lowerPercent": 54
+          },
+          "averageDeliveryRate": {
+            "mean": -13.666,
+            "median": -9.9,
+            "p10": -89.1,
+            "p90": 54.1,
+            "min": -174.9,
+            "max": 135.6,
+            "higherPercent": 45,
+            "equalPercent": 1,
+            "lowerPercent": 54
+          },
+          "completionRate": {
+            "mean": -0.393,
+            "median": -0.3,
+            "p10": -2.7,
+            "p90": 2,
+            "min": -4.9,
+            "max": 4.2,
+            "higherPercent": 47,
+            "equalPercent": 1,
+            "lowerPercent": 52
+          },
+          "completed": {
+            "mean": -3.93,
+            "median": -3,
+            "p10": -27,
+            "p90": 20,
+            "min": -49,
+            "max": 42,
+            "higherPercent": 47,
+            "equalPercent": 1,
+            "lowerPercent": 52
+          },
+          "failed": {
+            "mean": 0.17,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 2,
+            "higherPercent": 16,
+            "equalPercent": 84,
+            "lowerPercent": 0
+          },
+          "unfinished": {
+            "mean": 2.24,
+            "median": 1,
+            "p10": -19,
+            "p90": 26,
+            "min": -41,
+            "max": 51,
+            "higherPercent": 53,
+            "equalPercent": 3,
+            "lowerPercent": 44
+          }
+        }
+      },
+      {
+        "left": "important-only",
+        "right": "prioritize",
+        "difference": "important-only minus prioritize",
+        "context": "level 2",
+        "metrics": {
+          "elapsed": {
+            "mean": -474.679,
+            "median": -480,
+            "p10": -540,
+            "p90": -417.295,
+            "min": -540,
+            "max": -392.409,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "delivered": {
+            "mean": -4389.33,
+            "median": -4432,
+            "p10": -4942,
+            "p90": -3833,
+            "min": -5529,
+            "max": -3531,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "averageDeliveryRate": {
+            "mean": -403.155,
+            "median": -407.3,
+            "p10": -469.5,
+            "p90": -336.6,
+            "min": -534,
+            "max": -301.6,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completionRate": {
+            "mean": -39.479,
+            "median": -40,
+            "p10": -43,
+            "p90": -34.8,
+            "min": -45.1,
+            "max": -33.6,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completed": {
+            "mean": -429.71,
+            "median": -430,
+            "p10": -452,
+            "p90": -406,
+            "min": -469,
+            "max": -387,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "failed": {
+            "mean": 9.48,
+            "median": 9,
+            "p10": 4,
+            "p90": 16,
+            "min": 3,
+            "max": 20,
+            "higherPercent": 100,
+            "equalPercent": 0,
+            "lowerPercent": 0
+          },
+          "unfinished": {
+            "mean": -15.12,
+            "median": -15,
+            "p10": -39,
+            "p90": 5,
+            "min": -53,
+            "max": 54,
+            "higherPercent": 19,
+            "equalPercent": 1,
+            "lowerPercent": 80
+          }
+        }
+      }
+    ],
+    "level": [
+      {
+        "left": "level 2",
+        "right": "level 1",
+        "difference": "level 2 minus level 1",
+        "context": "maintain-everything",
+        "metrics": {
+          "elapsed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0,
+            "higherPercent": 0,
+            "equalPercent": 100,
+            "lowerPercent": 0
+          },
+          "delivered": {
+            "mean": -1883.49,
+            "median": -1963,
+            "p10": -2550,
+            "p90": -1273,
+            "min": -3029,
+            "max": -705,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "averageDeliveryRate": {
+            "mean": -188.349,
+            "median": -196.3,
+            "p10": -255,
+            "p90": -127.3,
+            "min": -302.9,
+            "max": -70.5,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completionRate": {
+            "mean": -5.204,
+            "median": -5.1,
+            "p10": -7.6,
+            "p90": -3.1,
+            "min": -9.2,
+            "max": -1.5,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completed": {
+            "mean": -52.04,
+            "median": -51,
+            "p10": -76,
+            "p90": -31,
+            "min": -92,
+            "max": -15,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "failed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0,
+            "higherPercent": 0,
+            "equalPercent": 100,
+            "lowerPercent": 0
+          },
+          "unfinished": {
+            "mean": 36.05,
+            "median": 35,
+            "p10": 18,
+            "p90": 52,
+            "min": 6,
+            "max": 69,
+            "higherPercent": 100,
+            "equalPercent": 0,
+            "lowerPercent": 0
+          }
+        }
+      },
+      {
+        "left": "level 2",
+        "right": "level 1",
+        "difference": "level 2 minus level 1",
+        "context": "prioritize",
+        "metrics": {
+          "elapsed": {
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0,
+            "higherPercent": 0,
+            "equalPercent": 100,
+            "lowerPercent": 0
+          },
+          "delivered": {
+            "mean": -1828.92,
+            "median": -1786,
+            "p10": -2441,
+            "p90": -1230,
+            "min": -3742,
+            "max": -650,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "averageDeliveryRate": {
+            "mean": -182.892,
+            "median": -178.6,
+            "p10": -244.1,
+            "p90": -123,
+            "min": -374.2,
+            "max": -65,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completionRate": {
+            "mean": -4.991,
+            "median": -5.1,
+            "p10": -7.4,
+            "p90": -2.9,
+            "min": -9.2,
+            "max": -0.4,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "completed": {
+            "mean": -49.91,
+            "median": -51,
+            "p10": -74,
+            "p90": -29,
+            "min": -92,
+            "max": -4,
+            "higherPercent": 0,
+            "equalPercent": 0,
+            "lowerPercent": 100
+          },
+          "failed": {
+            "mean": -4.94,
+            "median": -5,
+            "p10": -9,
+            "p90": -1,
+            "min": -16,
+            "max": 1,
+            "higherPercent": 2,
+            "equalPercent": 3,
+            "lowerPercent": 95
+          },
+          "unfinished": {
+            "mean": 39.51,
+            "median": 38,
+            "p10": 24,
+            "p90": 56,
+            "min": 8,
+            "max": 67,
+            "higherPercent": 100,
+            "equalPercent": 0,
+            "lowerPercent": 0
+          }
+        }
+      },
+      {
+        "left": "level 2",
+        "right": "level 1",
+        "difference": "level 2 minus level 1",
+        "context": "important-only",
+        "metrics": {
+          "elapsed": {
+            "mean": 5.739,
+            "median": 5.759,
+            "p10": -57.723,
+            "p90": 70,
+            "min": -121.695,
+            "max": 133.802,
+            "higherPercent": 53,
+            "equalPercent": 6,
+            "lowerPercent": 41
+          },
+          "delivered": {
+            "mean": 5.34,
+            "median": -5,
+            "p10": -151,
+            "p90": 170,
+            "min": -319,
+            "max": 274,
+            "higherPercent": 47,
+            "equalPercent": 1,
+            "lowerPercent": 52
+          },
+          "averageDeliveryRate": {
+            "mean": 0.64,
+            "median": -3,
+            "p10": -41.5,
+            "p90": 46.2,
+            "min": -107.6,
+            "max": 103.6,
+            "higherPercent": 46,
+            "equalPercent": 1,
+            "lowerPercent": 53
+          },
+          "completionRate": {
+            "mean": 0.114,
+            "median": 0,
+            "p10": -4.3,
+            "p90": 4.9,
+            "min": -11.4,
+            "max": 8.8,
+            "higherPercent": 45,
+            "equalPercent": 6,
+            "lowerPercent": 49
+          },
+          "completed": {
+            "mean": 0.62,
+            "median": 0,
+            "p10": -15,
+            "p90": 17,
+            "min": -33,
+            "max": 29,
+            "higherPercent": 46,
+            "equalPercent": 9,
+            "lowerPercent": 45
+          },
+          "failed": {
+            "mean": -0.64,
+            "median": 0,
+            "p10": -8,
+            "p90": 6,
+            "min": -16,
+            "max": 13,
+            "higherPercent": 45,
+            "equalPercent": 12,
+            "lowerPercent": 43
+          },
+          "unfinished": {
+            "mean": 3.36,
+            "median": 1,
+            "p10": -14,
+            "p90": 23,
+            "min": -42,
+            "max": 46,
+            "higherPercent": 53,
+            "equalPercent": 6,
+            "lowerPercent": 41
+          }
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Scripted policies are deterministic probes, not human playtests or guarantees about player outcomes.",
+    "The two levels can consume random draws differently, so a shared seed is not an identical-demand replay.",
+    "Fixed-horizon metrics freeze after an earlier ending and report alive=false.",
+    "The important-only policy intentionally idles when only low-importance work is live; it is diagnostic, not advice.",
+    "Opening completion ceilings stack the starting workers in one column, exclude later recruitment, and assume uninterrupted fresh tasks and omit reaction time, unattended decay, dependencies, and admission delays.",
+    "averagePending and averageWork use approximate left-endpoint time integrals. WIP/backlog/satisfaction peaks and unlock times are sampled at decision boundaries. Final and fixed-horizon counts are exact."
+  ]
+}

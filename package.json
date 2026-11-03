@@ -1,0 +1,19 @@
+{
+  "name": "multitasked-madness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A one-minute browser game about attention and continuous contribution.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --dist",
+    "test": "node --test tests/*.test.mjs",
+    "simulate": "node scripts/simulate.mjs",
+    "audit": "node scripts/simulate.mjs --audit"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

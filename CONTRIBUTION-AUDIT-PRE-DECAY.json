@@ -1,0 +1,65 @@
+{
+  "rules": "continuous-contribution-v1",
+  "config": {
+    "columns": 4,
+    "roundSeconds": 120,
+    "startingProgress": 0,
+    "maximumProgress": 100,
+    "growthPerSecond": 10,
+    "decayAtFullPerSecond": 1,
+    "decayAtZeroPerSecond": 6,
+    "contributionAtFullPerSecond": 1,
+    "audio": {
+      "lowHz": 180,
+      "highHz": 420,
+      "gain": 0.018
+    }
+  },
+  "limitations": "Scripted decisions; no human playtesting, fairness claim or optimality claim.",
+  "results": [
+    {
+      "policy": "idle",
+      "seconds": 120,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "policy": "hold one",
+      "seconds": 120,
+      "contribution": 115,
+      "perColumn": [
+        115,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "policy": "switch every 2s",
+      "seconds": 120,
+      "contribution": 34.088189,
+      "perColumn": [
+        8.63576,
+        8.63576,
+        8.556625,
+        8.260043
+      ]
+    },
+    {
+      "policy": "switch every 10s",
+      "seconds": 120,
+      "contribution": 305.795727,
+      "perColumn": [
+        86.370868,
+        81.424497,
+        73.702739,
+        64.297624
+      ]
+    }
+  ]
+}

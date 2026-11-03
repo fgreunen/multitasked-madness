@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Four columns. One focus. One minute to make your contribution.">
+  <title>Multitasked Madness — Contribution</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <h1 class="wordmark"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Multitasked <span>Madness</span></h1>
+      <div class="header-actions">
+        <div class="level-controls" role="group" aria-label="Level selection">
+          <button class="level-button" id="level-1" type="button" aria-pressed="true">Level 1</button>
+          <button class="level-button" id="level-2" type="button" aria-pressed="false" disabled title="Complete Level 1 to unlock">Level 2</button>
+        </div>
+        <button class="quiet-button" id="pause" type="button" hidden>Pause</button>
+      </div>
+    </header>
+    <p class="game-intro">Multitasked Madness is a game about where you put your attention. Build contribution by focusing on one column at a time while the others gradually fade. Explore how staying focused and switching between columns change what you achieve, then compare your results across levels.</p>
+    <section class="dashboard" aria-label="Round statistics">
+      <div class="contribution-card"><span class="metric-label">CONTRIBUTION</span><strong id="contribution">0</strong><span class="live-rate" id="rate">Contribution per second: +0</span></div>
+      <div class="history-card"><span class="metric-label">OVER TIME</span>
+        <svg class="contribution-history" id="history" viewBox="0 0 360 106" role="img" aria-label="Total contribution over time">
+          <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
+          <path class="chart-area" id="history-area"/><path class="chart-line" id="history-line"/>
+          <path class="chart-comparison" id="history-comparison"/>
+          <text class="chart-label" id="history-max" x="12" y="11">10</text>
+          <text class="chart-label" x="12" y="101">0:00</text><text class="chart-label" id="history-mid" x="180" y="101" text-anchor="middle"></text><text class="chart-label" id="history-end" x="348" y="101" text-anchor="end"></text>
+        </svg>
+        <div class="chart-legend" id="history-legend" hidden><span>Level 2</span><span>Level 1</span></div>
+      </div>
+      <div class="time-card"><span class="metric-label">TIME LEFT</span><strong id="timer"></strong><div class="time-track" aria-hidden="true"><i id="time-fill"></i></div></div>
+    </section>
+    <section class="workload" aria-label="Contribution columns">
+      <p class="board-hint" id="hint" role="status">Hold any button to start.</p>
+      <div class="board" id="board"></div>
+    </section>
+    <p class="contribution-note">Higher columns contribute disproportionately more.<br><span id="contribution-guide"></span></p>
+  </main>
+  <dialog id="results" aria-labelledby="result-title">
+    <div class="result-content">
+      <h2 id="result-title">Level 1 complete.</h2>
+      <span class="metric-label">CONTRIBUTION</span><strong id="result-total" class="result-total">0</strong>
+      <p id="result-average"></p>
+      <svg class="contribution-history result-history" id="result-history" viewBox="0 0 360 106" role="img" aria-label="Final total contribution over time">
+        <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
+        <path class="chart-area" id="result-history-area"/><path class="chart-line" id="result-history-line"/>
+        <path class="chart-comparison" id="result-history-comparison"/>
+        <text class="chart-label" id="result-history-max" x="12" y="11">10</text>
+        <text class="chart-label" x="12" y="101">0:00</text><text class="chart-label" id="result-history-mid" x="180" y="101" text-anchor="middle"></text><text class="chart-label" id="result-history-end" x="348" y="101" text-anchor="end"></text>
+      </svg>
+      <div class="chart-legend" id="result-history-legend" hidden><span>Level 2</span><span>Level 1</span></div>
+      <section class="result-comparison" id="result-comparison" aria-labelledby="comparison-title" hidden>
+        <h3 id="comparison-title">Compared with Level 1</h3>
+        <p id="comparison-change"></p>
+        <table>
+          <thead><tr><td></td><th scope="col">Level 1</th><th scope="col">Level 2</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Total points</th><td id="comparison-level1-total"></td><td id="comparison-level2-total"></td></tr>
+            <tr><th scope="row">Average points/s</th><td id="comparison-level1-rate"></td><td id="comparison-level2-rate"></td></tr>
+            <tr><th scope="row">Column switches</th><td id="comparison-level1-switches"></td><td id="comparison-level2-switches"></td></tr>
+            <tr><th scope="row">Average focus hold</th><td id="comparison-level1-focus"></td><td id="comparison-level2-focus"></td></tr>
+          </tbody>
+        </table>
+      </section>
+      <button class="primary-button" id="next-level" type="button" hidden>Continue to Level 2 <span aria-hidden="true">↗</span></button>
+      <button class="primary-button" id="retry" type="button">Play again <span aria-hidden="true">↗</span></button>
+    </div>
+  </dialog>
+</body>
+</html>

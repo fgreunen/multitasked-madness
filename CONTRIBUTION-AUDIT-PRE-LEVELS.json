@@ -1,0 +1,61 @@
+{
+  "rules": "continuous-contribution-v2",
+  "config": {
+    "columns": 4,
+    "roundSeconds": 120,
+    "startingProgress": 0,
+    "maximumProgress": 100,
+    "growthPerSecond": 10,
+    "decayAtFullPerSecond": 1.1,
+    "decayAtZeroPerSecond": 6.6,
+    "contributionAtFullPerSecond": 1,
+    "historySampleSeconds": 1
+  },
+  "limitations": "Scripted decisions; no human playtesting, fairness claim or optimality claim.",
+  "results": [
+    {
+      "policy": "idle",
+      "seconds": 120,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "policy": "hold one",
+      "seconds": 120,
+      "contribution": 115,
+      "perColumn": [
+        115,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "policy": "switch every 2s",
+      "seconds": 120,
+      "contribution": 32.096405,
+      "perColumn": [
+        8.123419,
+        8.123419,
+        8.067711,
+        7.781857
+      ]
+    },
+    {
+      "policy": "switch every 10s",
+      "seconds": 120,
+      "contribution": 284.044886,
+      "perColumn": [
+        80.026203,
+        76.036435,
+        68.657937,
+        59.324311
+      ]
+    }
+  ]
+}

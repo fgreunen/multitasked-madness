@@ -1,0 +1,104 @@
+{
+  "rules": "satisfaction-shirts-v9",
+  "seeds": 100,
+  "seedStart": 1,
+  "roundSeconds": 180,
+  "decisionStepSeconds": 0.1,
+  "methodology": "Both levels use matched immutable demand tapes. Fixed-columns places five workers once across four columns. Maintain-everything spreads workers; prioritize concentrates on important work and current reward. Policies act every 0.1s.",
+  "limitations": [
+    "Scripted probes are faster than human decisions; no human pacing or guaranteed WIP benefit is established.",
+    "Entry times, urgent age, staffing, scope creep and dependencies depend on play. Delayed work is not yet live."
+  ],
+  "summaries": [
+    {
+      "strategy": "fixed-columns",
+      "level": 1,
+      "meanCompleted": 47.14,
+      "meanSatisfactionGained": 54.492,
+      "meanImportantSatisfactionGained": 29.579,
+      "meanDelayed": 27.09,
+      "meanLive": 3.77,
+      "meanStakeholderSatisfaction": [
+        10.696,
+        -3.609,
+        -2.639,
+        -1.956
+      ]
+    },
+    {
+      "strategy": "fixed-columns",
+      "level": 2,
+      "meanCompleted": 25.72,
+      "meanSatisfactionGained": 29.529,
+      "meanImportantSatisfactionGained": 13.963,
+      "meanDelayed": 50.32,
+      "meanLive": 1.96,
+      "meanStakeholderSatisfaction": [
+        -4.067,
+        -6.725,
+        -6.139,
+        -5.54
+      ]
+    },
+    {
+      "strategy": "maintain-everything",
+      "level": 1,
+      "meanCompleted": 51.83,
+      "meanSatisfactionGained": 67.191,
+      "meanImportantSatisfactionGained": 38.855,
+      "meanDelayed": 22.56,
+      "meanLive": 3.61,
+      "meanStakeholderSatisfaction": [
+        4.035,
+        3.4,
+        3.136,
+        4.621
+      ]
+    },
+    {
+      "strategy": "maintain-everything",
+      "level": 2,
+      "meanCompleted": 53.57,
+      "meanSatisfactionGained": 83.398,
+      "meanImportantSatisfactionGained": 48.365,
+      "meanDelayed": 22.45,
+      "meanLive": 1.98,
+      "meanStakeholderSatisfaction": [
+        7.909,
+        7.868,
+        7.442,
+        8.18
+      ]
+    },
+    {
+      "strategy": "prioritize",
+      "level": 1,
+      "meanCompleted": 48,
+      "meanSatisfactionGained": 74.164,
+      "meanImportantSatisfactionGained": 42.492,
+      "meanDelayed": 26.27,
+      "meanLive": 3.73,
+      "meanStakeholderSatisfaction": [
+        5.244,
+        5.721,
+        6.59,
+        4.609
+      ]
+    },
+    {
+      "strategy": "prioritize",
+      "level": 2,
+      "meanCompleted": 54.02,
+      "meanSatisfactionGained": 83.971,
+      "meanImportantSatisfactionGained": 49.899,
+      "meanDelayed": 21.98,
+      "meanLive": 2,
+      "meanStakeholderSatisfaction": [
+        7.467,
+        8.27,
+        8.051,
+        8.183
+      ]
+    }
+  ]
+}

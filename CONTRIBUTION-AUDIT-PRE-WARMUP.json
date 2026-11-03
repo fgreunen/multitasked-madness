@@ -1,0 +1,114 @@
+{
+  "rules": "continuous-contribution-minute-constant-decay-v4",
+  "config": {
+    "columns": 4,
+    "level2Columns": 2,
+    "roundSeconds": 60,
+    "startingProgress": 0,
+    "maximumProgress": 100,
+    "growthPerSecond": 10,
+    "decayPerSecond": 3.85,
+    "contributionAtFullPerSecond": 1,
+    "contributionDisplayScale": 100,
+    "historySampleSeconds": 1
+  },
+  "limitations": "Scripted decisions; no human playtesting, fairness claim or optimality claim.",
+  "results": [
+    {
+      "level": 1,
+      "policy": "idle",
+      "seconds": 60,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "hold one",
+      "seconds": 60,
+      "contribution": 55,
+      "perColumn": [
+        55,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "switch every 2s",
+      "seconds": 60,
+      "contribution": 20.840974,
+      "perColumn": [
+        5.559364,
+        5.236364,
+        5.036364,
+        5.008883
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "switch every 10s",
+      "seconds": 60,
+      "contribution": 89.336039,
+      "perColumn": [
+        31.062013,
+        22.987013,
+        17.987013,
+        17.3
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "idle",
+      "seconds": 60,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "hold one",
+      "seconds": 60,
+      "contribution": 55,
+      "perColumn": [
+        55,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "switch every 2s",
+      "seconds": 60,
+      "contribution": 88.22276,
+      "perColumn": [
+        45.07288,
+        43.14988,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "switch every 10s",
+      "seconds": 60,
+      "contribution": 87.4105,
+      "perColumn": [
+        47.74275,
+        39.66775,
+        0,
+        0
+      ]
+    }
+  ]
+}

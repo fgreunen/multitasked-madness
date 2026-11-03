@@ -1,0 +1,122 @@
+{
+  "rules": "rotating-satisfaction-v10",
+  "seeds": 100,
+  "seedStart": 1,
+  "roundSeconds": 180,
+  "decisionStepSeconds": 0.1,
+  "methodology": "Both levels use matched immutable demand tapes. Runs end at zero total satisfaction or the round limit. Fixed-columns places five workers once across available physical columns (four in level 1, two in level 2). Maintain-everything spreads workers; prioritize concentrates on important work and current reward. Level 2 rotates stakeholders after successful completion feedback. Policies act every 0.1s.",
+  "limitations": [
+    "Scripted probes are faster than human decisions; no human pacing or guaranteed WIP benefit is established.",
+    "Entry times, urgent age, staffing, scope creep and dependencies depend on play. Delayed work is not yet live."
+  ],
+  "summaries": [
+    {
+      "strategy": "fixed-columns",
+      "level": 1,
+      "meanElapsed": 145.012,
+      "satisfactionEndings": 55,
+      "roundEndings": 45,
+      "meanCompleted": 36.3,
+      "meanSatisfactionGained": 41.505,
+      "meanImportantSatisfactionGained": 22.363,
+      "meanDelayed": 17.52,
+      "meanLive": 3.82,
+      "meanStakeholderSatisfaction": [
+        8.299,
+        -2.371,
+        -1.58,
+        -0.847
+      ]
+    },
+    {
+      "strategy": "fixed-columns",
+      "level": 2,
+      "meanElapsed": 179.781,
+      "satisfactionEndings": 1,
+      "roundEndings": 99,
+      "meanCompleted": 47.96,
+      "meanSatisfactionGained": 70.717,
+      "meanImportantSatisfactionGained": 38.543,
+      "meanDelayed": 28.14,
+      "meanLive": 1.76,
+      "meanStakeholderSatisfaction": [
+        5.089,
+        4.321,
+        5.18,
+        4.214
+      ]
+    },
+    {
+      "strategy": "maintain-everything",
+      "level": 1,
+      "meanElapsed": 178.454,
+      "satisfactionEndings": 7,
+      "roundEndings": 93,
+      "meanCompleted": 51.33,
+      "meanSatisfactionGained": 66.341,
+      "meanImportantSatisfactionGained": 38.38,
+      "meanDelayed": 22,
+      "meanLive": 3.65,
+      "meanStakeholderSatisfaction": [
+        3.941,
+        3.329,
+        3.141,
+        4.548
+      ]
+    },
+    {
+      "strategy": "maintain-everything",
+      "level": 2,
+      "meanElapsed": 180,
+      "satisfactionEndings": 0,
+      "roundEndings": 100,
+      "meanCompleted": 49.15,
+      "meanSatisfactionGained": 75.23,
+      "meanImportantSatisfactionGained": 41.297,
+      "meanDelayed": 27.17,
+      "meanLive": 1.68,
+      "meanStakeholderSatisfaction": [
+        5.309,
+        6.229,
+        5.756,
+        5.937
+      ]
+    },
+    {
+      "strategy": "prioritize",
+      "level": 1,
+      "meanElapsed": 180,
+      "satisfactionEndings": 0,
+      "roundEndings": 100,
+      "meanCompleted": 48,
+      "meanSatisfactionGained": 74.164,
+      "meanImportantSatisfactionGained": 42.492,
+      "meanDelayed": 26.27,
+      "meanLive": 3.73,
+      "meanStakeholderSatisfaction": [
+        5.244,
+        5.721,
+        6.59,
+        4.609
+      ]
+    },
+    {
+      "strategy": "prioritize",
+      "level": 2,
+      "meanElapsed": 180,
+      "satisfactionEndings": 0,
+      "roundEndings": 100,
+      "meanCompleted": 49.7,
+      "meanSatisfactionGained": 76.399,
+      "meanImportantSatisfactionGained": 42.974,
+      "meanDelayed": 26.59,
+      "meanLive": 1.71,
+      "meanStakeholderSatisfaction": [
+        6.315,
+        6.092,
+        6.249,
+        5.743
+      ]
+    }
+  ]
+}

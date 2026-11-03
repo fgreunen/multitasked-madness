@@ -1,0 +1,125 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { Game, CONFIG, decayRate, contributionRate } from '../src/game.js';
+
+const near = (actual, expected, tolerance = 1e-8) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
+const started = () => { const game = new Game(); game.start(); return game; };
+
+test('four identical empty columns, frozen until first activation', () => {
+  const game = new Game();
+  assert.equal(game.columns.length, 4);
+  assert.deepEqual(game.columns, Array.from({length:4}, () => ({progress:0,contribution:0})));
+  assert.equal(game.remaining, 120);
+  assert.equal(game.hold(0), false);
+  game.advance(50);
+  assert.equal(game.elapsed, 0);
+  assert.equal(game.contribution, 0);
+});
+test('idle zero contribution never ends a round early', () => {
+  const game = started();
+  game.advance(119);
+  assert.equal(game.status, 'running');
+  assert.equal(game.contribution, 0);
+  game.advance(1);
+  assert.equal(game.status, 'ended');
+});
+test('holding fills in 10 seconds and integrates the rising height', () => {
+  const game = started(); game.hold(0); game.advance(5);
+  near(game.columns[0].progress, 50); near(game.contribution, 1.25); near(game.rate, 0.5);
+  game.advance(5);
+  near(game.columns[0].progress, 100); near(game.contribution, 5);
+  assert.equal(game.status, 'running');
+});
+test('100% persists while held, never completes or resets, earning one per second', () => {
+  const game = started(); game.hold(0); game.advance(120);
+  near(game.columns[0].progress, 100); near(game.contribution, 115);
+  assert.equal(game.elapsed, 120); assert.equal(game.activeColumn, null);
+});
+test('single active column and validated index', () => {
+  const game = started();
+  for (const index of [-1, 4, 1.5, NaN, '0']) assert.equal(game.hold(index), false);
+  game.hold(0); game.advance(5); game.hold(1); game.advance(2);
+  assert.equal(game.activeColumn, 1);
+  assert.ok(game.columns[0].progress < 50); near(game.columns[1].progress, 20);
+  assert.ok(game.columns[0].contribution > 1.25);
+});
+test('linear contribution and faster decay at lower height', () => {
+  near(contributionRate(0), 0); near(contributionRate(50), .5); near(contributionRate(100), 1);
+  near(decayRate(0), 6.6); near(decayRate(50), 3.85); near(decayRate(100), 1.1);
+  const game = started(); game.hold(0); game.advance(10); game.release(); game.advance(10);
+  near(game.columns[0].progress, 120 - 20 * Math.exp(.55));
+  near(game.contribution, 5 + (1200 - (20 / .055) * Math.expm1(.55)) / 100);
+});
+test('released columns reach exact zero; no negative height or future earnings', () => {
+  const game = started(); game.hold(0); game.advance(10); game.release(); game.advance(50);
+  assert.equal(game.columns[0].progress, 0);
+  near(game.contribution, 5 + 1.2 * (Math.log(6) / .055) - 1 / .055);
+  const before = game.contribution; game.advance(50);
+  assert.equal(game.contribution, before);
+});
+test('empty columns can be built again without new tasks', () => {
+  const game = started(); game.hold(2); game.advance(1); game.release(); game.advance(10);
+  assert.equal(game.columns[2].progress, 0);
+  game.hold(2); game.advance(1); near(game.columns[2].progress, 10);
+});
+test('coarse, fine and uneven frames produce equal outcomes through cap, zero and switches', () => {
+  function play(step) {
+    const game = started();
+    for (const [duration, column] of [[13,0],[7,1],[20,2],[4,null],[40,3],[36,null]]) {
+      if (column === null) game.release(); else game.hold(column);
+      const target = Math.min(CONFIG.roundSeconds, game.elapsed + duration);
+      while (game.elapsed < target - 1e-9) game.advance(Math.min(step, target - game.elapsed));
+    }
+    return game;
+  }
+  const coarse = play(1000);
+  for (const step of [1/60, .073, 1.37]) {
+    const other = play(step);
+    near(other.contribution, coarse.contribution, 1e-6);
+    for (let i=0;i<4;i++) near(other.columns[i].progress, coarse.columns[i].progress, 1e-6);
+  }
+});
+test('round boundary clips a long frame and freezes all state', () => {
+  const game = started(); game.advance(115); game.hold(0); game.advance(1000);
+  near(game.columns[0].progress, 50); near(game.contribution, 1.25);
+  assert.equal(game.elapsed, 120); assert.equal(game.remaining, 0);
+  const before = JSON.stringify(game); game.advance(100); game.hold(1); game.resume(); game.start();
+  assert.equal(JSON.stringify(game), before);
+});
+test('pause freezes progress, contribution and timer; resume requires a fresh hold', () => {
+  const game = started(); game.hold(1); game.advance(3); game.pause();
+  const before=JSON.stringify(game); game.advance(100);
+  assert.equal(JSON.stringify(game), before); assert.equal(game.hold(0), false);
+  game.resume(); game.advance(1); assert.ok(game.columns[1].progress < 30);
+});
+test('reset clears all metrics and returns to ready', () => {
+  const game = started(); game.hold(2); game.advance(120); game.reset();
+  assert.deepEqual(game, new Game());
+});
+test('invalid time deltas never corrupt state', () => {
+  const game = started(); const before=JSON.stringify(game);
+  for (const time of [-1,0,NaN,Infinity,-Infinity]) game.advance(time);
+  assert.equal(JSON.stringify(game),before);
+});
+
+test('history samples exact running seconds through long frames and includes round end', () => {
+  const game=started();game.hold(0);game.advance(500);
+  assert.equal(game.history.length,121);near(game.history[5].contribution,1.25);
+  near(game.history[10].contribution,5);near(game.history.at(-1).contribution,115);
+  assert.equal(game.history.at(-1).time,120);
+  for(let i=1;i<game.history.length;i++){
+    assert.equal(game.history[i].time,i);
+    assert.ok(game.history[i].contribution>=game.history[i-1].contribution);
+  }
+});
+test('history is frame-independent, including decay across zero', () => {
+  function play(step){
+    const game=started();game.hold(0);
+    while(game.elapsed<10)game.advance(Math.min(step,10-game.elapsed));
+    game.release();while(game.elapsed<120)game.advance(Math.min(step,120-game.elapsed));
+    return game;
+  }
+  const coarse=play(1000),fine=play(.073);
+  assert.equal(coarse.history.length,fine.history.length);
+  coarse.history.forEach((point,i)=>{assert.equal(point.time,fine.history[i].time);near(point.contribution,fine.history[i].contribution,1e-7);});
+});

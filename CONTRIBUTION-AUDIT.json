@@ -1,0 +1,115 @@
+{
+  "rules": "quadratic-contribution-warmup-v6",
+  "config": {
+    "columns": 4,
+    "level2Columns": 2,
+    "roundSeconds": 60,
+    "startingProgress": 0,
+    "maximumProgress": 100,
+    "growthPerSecond": 10,
+    "warmupSeconds": 2,
+    "decayPerSecond": 3.85,
+    "contributionAtFullPerSecond": 1,
+    "contributionDisplayScale": 100,
+    "historySampleSeconds": 1
+  },
+  "limitations": "Scripted decisions; no human playtesting, fairness claim or optimality claim.",
+  "results": [
+    {
+      "level": 1,
+      "policy": "idle",
+      "seconds": 60,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "hold one",
+      "seconds": 60,
+      "contribution": 52.334,
+      "perColumn": [
+        52.334,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "switch every 2s",
+      "seconds": 60,
+      "contribution": 0.370977,
+      "perColumn": [
+        0.101159,
+        0.092606,
+        0.088606,
+        0.088606
+      ]
+    },
+    {
+      "level": 1,
+      "policy": "switch every 10s",
+      "seconds": 60,
+      "contribution": 44.940815,
+      "perColumn": [
+        16.302105,
+        11.173022,
+        8.742355,
+        8.723333
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "idle",
+      "seconds": 60,
+      "contribution": 0,
+      "perColumn": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "hold one",
+      "seconds": 60,
+      "contribution": 52.334,
+      "perColumn": [
+        52.334,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "switch every 2s",
+      "seconds": 60,
+      "contribution": 6.209107,
+      "perColumn": [
+        3.25212,
+        2.956987,
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "policy": "switch every 10s",
+      "seconds": 60,
+      "contribution": 65.888655,
+      "perColumn": [
+        36.266369,
+        29.622286,
+        0,
+        0
+      ]
+    }
+  ]
+}
