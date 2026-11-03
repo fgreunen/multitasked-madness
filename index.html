@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f3ed">
+  <meta name="theme-color" content="#f5f3f4">
   <meta name="description" content="Four columns. One focus. One minute to make your contribution.">
   <title>Multitasked Madness — Contribution</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -19,45 +19,55 @@
         <div class="header-actions">
           <div class="level-controls" role="group" aria-label="Level selection">
             <button class="level-button" id="level-1" type="button" aria-pressed="true">Level 1</button>
-            <button class="level-button" id="level-2" type="button" aria-pressed="false" disabled title="Complete Level 1 to unlock">Level 2</button>
+            <button class="level-button" id="level-2" type="button" aria-pressed="false" disabled aria-describedby="level-hint" title="Complete Level 1 to unlock"><span id="level-lock" aria-hidden="true"><svg class="lock-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg></span>Level 2</button>
           </div>
           <button class="quiet-button" id="pause" type="button" hidden>Pause</button>
         </div>
+        <p class="level-hint" id="level-hint">Finish Level 1 to unlock Level 2.</p>
       </div>
     </header>
-    <p class="game-intro">Multitasked Madness is a game about where you put your attention. Build contribution by focusing on one column at a time while the others gradually fade. Explore how staying focused and switching between columns change what you achieve, then compare your results across levels.</p>
+    <p class="game-intro">Hold to build a column. Release to switch while the others gradually fade. Explore how you divide your attention, then compare two one-minute rounds.</p>
     <section class="dashboard" aria-label="Round statistics">
-      <div class="contribution-card"><span class="metric-label">CONTRIBUTION</span><strong id="contribution">0</strong><span class="live-rate" id="rate">Contribution per second: +0</span></div>
-      <div class="history-card"><span class="metric-label">OVER TIME</span>
-        <svg class="contribution-history" id="history" viewBox="0 0 360 106" role="img" aria-label="Total contribution over time">
-          <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
-          <path class="chart-area" id="history-area"/><path class="chart-line" id="history-line"/>
-          <path class="chart-comparison" id="history-comparison"/>
-          <text class="chart-label" id="history-max" x="12" y="11">10</text>
-          <text class="chart-label" x="12" y="101">0:00</text><text class="chart-label" id="history-mid" x="180" y="101" text-anchor="middle"></text><text class="chart-label" id="history-end" x="348" y="101" text-anchor="end"></text>
-        </svg>
+      <div class="contribution-card"><span class="metric-label">TOTAL CONTRIBUTION</span><strong id="contribution">0</strong><span class="live-rate" id="rate">+0 pts/s</span></div>
+      <div class="history-card"><span class="metric-label">CONTRIBUTION OVER TIME</span>
+        <div class="chart-frame">
+          <svg class="contribution-history" id="history" viewBox="0 0 360 106" preserveAspectRatio="none" role="img" aria-label="Total contribution over time">
+            <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
+            <path class="chart-area" id="history-area"/><path class="chart-line" id="history-line"/>
+            <path class="chart-comparison" id="history-comparison"/>
+          </svg>
+          <span class="chart-maximum" id="history-max" aria-hidden="true">10</span>
+          <div class="chart-time-axis" aria-hidden="true"><span>0:00</span><span id="history-mid"></span><span id="history-end"></span></div>
+        </div>
+        <p class="chart-empty" id="history-empty">Your contribution will appear here.</p>
         <div class="chart-legend" id="history-legend" hidden><span>Level 2</span><span>Level 1</span></div>
       </div>
       <div class="time-card"><span class="metric-label">TIME LEFT</span><strong id="timer"></strong><div class="time-track" aria-hidden="true"><i id="time-fill"></i></div></div>
     </section>
     <section class="workload" aria-label="Contribution columns">
-      <p class="board-hint" id="hint" role="status">Hold any button to start.</p>
+      <p class="level-note" id="level-note" hidden>Level 2: focus on the left two columns. The other two are unavailable.</p>
       <div class="board" id="board"></div>
+      <div class="board-help">
+        <p class="board-hint" id="hint" role="status">Press and hold a Focus button to begin your 60-second round.</p>
+        <p class="input-help" id="input-help">Keyboard: hold <kbd>Space</kbd> or <kbd>Enter</kbd></p>
+      </div>
     </section>
     <p class="contribution-note">Higher columns contribute disproportionately more.<br><span id="contribution-guide"></span></p>
   </main>
   <dialog id="results" aria-labelledby="result-title">
     <div class="result-content">
       <h2 id="result-title">Level 1 complete.</h2>
-      <span class="metric-label">CONTRIBUTION</span><strong id="result-total" class="result-total">0</strong>
+      <span class="metric-label">TOTAL CONTRIBUTION</span><strong id="result-total" class="result-total">0</strong>
       <p id="result-average"></p>
-      <svg class="contribution-history result-history" id="result-history" viewBox="0 0 360 106" role="img" aria-label="Final total contribution over time">
-        <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
-        <path class="chart-area" id="result-history-area"/><path class="chart-line" id="result-history-line"/>
-        <path class="chart-comparison" id="result-history-comparison"/>
-        <text class="chart-label" id="result-history-max" x="12" y="11">10</text>
-        <text class="chart-label" x="12" y="101">0:00</text><text class="chart-label" id="result-history-mid" x="180" y="101" text-anchor="middle"></text><text class="chart-label" id="result-history-end" x="348" y="101" text-anchor="end"></text>
-      </svg>
+      <div class="chart-frame result-history">
+        <svg class="contribution-history" id="result-history" viewBox="0 0 360 106" preserveAspectRatio="none" role="img" aria-label="Final total contribution over time">
+          <path class="chart-guide" d="M12 16H348 M12 49H348 M12 82H348"/>
+          <path class="chart-area" id="result-history-area"/><path class="chart-line" id="result-history-line"/>
+          <path class="chart-comparison" id="result-history-comparison"/>
+        </svg>
+        <span class="chart-maximum" id="result-history-max" aria-hidden="true">10</span>
+        <div class="chart-time-axis" aria-hidden="true"><span>0:00</span><span id="result-history-mid"></span><span id="result-history-end"></span></div>
+      </div>
       <div class="chart-legend" id="result-history-legend" hidden><span>Level 2</span><span>Level 1</span></div>
       <section class="result-comparison" id="result-comparison" aria-labelledby="comparison-title" hidden>
         <h3 id="comparison-title">Compared with Level 1</h3>
@@ -72,7 +82,7 @@
         </table>
       </section>
       <button class="primary-button" id="next-level" type="button" hidden>Continue to Level 2 <span aria-hidden="true">↗</span></button>
-      <button class="primary-button" id="retry" type="button">Play again <span aria-hidden="true">↗</span></button>
+      <button class="primary-button secondary-button" id="retry" type="button">Play again <span aria-hidden="true">↗</span></button>
     </div>
   </dialog>
 </body>

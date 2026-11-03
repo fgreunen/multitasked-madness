@@ -65,7 +65,7 @@ const controls = Array.from({ length: CONFIG.columns }, (_, index) => {
   const column = document.createElement('section');
   column.className = 'column';
   column.innerHTML = `<div class="column-track" role="progressbar" aria-label="Column ${index + 1} height" aria-valuemin="0" aria-valuemax="${CONFIG.maximumProgress}" aria-valuenow="0"><div class="column-fill"></div><strong class="column-progress" aria-hidden="true">0%</strong></div>
-    <button class="activator" type="button" aria-label="Focus on column ${index + 1}" aria-pressed="false"><span>Focus</span><small class="warmup-label" hidden>Warming up</small><i class="warmup-meter" aria-hidden="true" hidden></i></button>`;
+    <button class="activator" type="button" aria-describedby="input-help" title="Hold with mouse or touch, or hold Space or Enter while focused" aria-label="Focus on column ${index + 1}" aria-pressed="false"><span>Focus</span><small class="warmup-label" hidden>Warming up</small><i class="warmup-meter" aria-hidden="true" hidden></i></button>`;
   $('board').append(column);
   const button = column.querySelector('.activator');
   button.addEventListener('pointerdown', event => {
@@ -175,13 +175,17 @@ function render() {
   $('level-1').setAttribute('aria-pressed', String(game.level === 1));
   $('level-2').setAttribute('aria-pressed', String(game.level === 2));
   $('level-2').title = session.level2Unlocked ? `WIP limit: ${CONFIG.level2Columns} columns` : 'Complete Level 1 to unlock';
+  $('level-hint').hidden = session.level2Unlocked;
+  $('level-lock').hidden = session.level2Unlocked;
+  $('level-note').hidden = game.level !== 2;
+  $('history-empty').hidden = game.status !== 'ready' || game.level === 2;
   $('contribution').textContent = displayContribution(game.contribution);
-  $('rate').textContent = `Contribution per second: +${displayContribution(game.rate)}`;
+  $('rate').textContent = `+${displayContribution(game.rate)} pts/s`;
   $('timer').textContent = formatTime(game.remaining);
   $('time-fill').style.width = `${game.remaining / CONFIG.roundSeconds * 100}%`;
   $('pause').hidden = game.status === 'ready' || game.status === 'ended';
   $('pause').textContent = game.status === 'paused' ? 'Resume' : 'Pause';
-  $('hint').textContent = { ready: 'Hold any button to start.', running: 'Hold to build · release to switch.', paused: 'Paused · Resume to continue.', ended: 'Round complete.' }[game.status];
+  $('hint').textContent = { ready: `Press and hold a Focus button to begin your ${CONFIG.roundSeconds}-second round.`, running: 'Hold to build · release to switch.', paused: 'Paused · Resume to continue.', ended: 'Round complete.' }[game.status];
   controls.forEach((view, index) => {
     const column = game.columns[index];
     const locked = !game.isColumnAvailable(index);
@@ -212,6 +216,7 @@ function render() {
     clearHold();
     $('result-title').textContent = `Level ${game.level} complete.`;
     $('next-level').hidden = game.level !== 1;
+    $('retry').classList.toggle('secondary-button', game.level === 1);
     $('result-total').textContent = displayContribution(game.contribution);
     $('result-average').textContent = `${displayContribution(game.contribution / CONFIG.roundSeconds)} points/s average`;
     drawHistory('result-history');

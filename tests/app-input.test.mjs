@@ -219,13 +219,13 @@ test('columns omit motion arrows while retaining accessible growth and decay des
 });
 test('contribution displays as 100x integers without rounding internal contribution or rate', async () => {
   const ui = await app();
-  assert.equal(ui.elements.get('rate').textContent, 'Contribution per second: +0');
+  assert.equal(ui.elements.get('rate').textContent, '+0 pts/s');
   ui.down(0);
   ui.frame(5500);
   assert.ok(Math.abs(ui.game.contribution - 3653 / 12000) < 1e-10);
   assert.equal(ui.game.rate, 0.2025);
   assert.equal(ui.elements.get('contribution').textContent, '30');
-  assert.equal(ui.elements.get('rate').textContent, 'Contribution per second: +20');
+  assert.equal(ui.elements.get('rate').textContent, '+20 pts/s');
   assert.equal(ui.elements.get('history-max').textContent, '1000');
   assert.match(ui.elements.get('history').attributes.get('aria-label'), /30 points/);
   assert.equal(ui.column(0).progress.textContent, '45%');
