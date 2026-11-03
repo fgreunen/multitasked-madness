@@ -1,11 +1,22 @@
 # TODO
 
+## Page-session progression — 3 November 2026
+
+- [x] Add pure PageSession alongside Game, owning round preparation, timed completion, Level 2 unlock and the copied read-only Level 1 baseline. Move progression out of rendering and share guarded retry/level preparation. Record page-session domain terms in GLOSSARY.md.
+- [x] All 54 active tests pass, including five direct session tests without rendering and the existing handler/chart/model checks. Comparison tests obtain their baseline through completed rounds. Scripted scores are unchanged; the seven source/build/dev/preview assets match byte-for-byte.
+- [x] Browser-verified real holds, released decay, pause/resume, natural completion in both levels, Level 2 unlock/continuation, blocked right-hand input, baseline comparison and retry reset with first-hold growth. Board and results fit 1280x600 and 1024x768; no browser warnings/errors. Screenshots: C:/Users/fgreu/.codex/visualizations/2026/11/03/01a1a31c-6cb1-7691-af20-8930ae5067f3/page-session-results-1280.jpg and page-session-results-1024.jpg. Existing player tabs preserved.
+
+## Simpler Level 2 results — 3 November 2026
+
+- [x] Remove column switches and average focus hold from results, retaining contribution totals/rates and the graph. Add higher/lower/tied Level 2 reflection messages using the same unrounded-score comparison as the numeric summary.
+- [x] All 49 checks pass, including improved/worse/equal/zero-baseline/sub-unit cases, removed metric bindings and results/retry lifecycle. Seven-asset static build passes; superseded effort-result tests retained in tests/history-pre-simpler-results.
+
 ## Quadratic contribution — 3 November 2026
 
 - [x] Reward high progress using squared normalized height in both levels. Integrate quadratic rates analytically through warm-up, cap, decay-to-zero and exact timer boundaries; preserve other mechanics.
 - [x] Explain the curve with a shared 25/50/75/100% height-to-points/s reference derived from scoring and a new footnote, reusing quarter-height track guides without live per-column rates. Preserve the game introduction.
 - [x] All 50 model/input/chart checks pass; preserve linear-scoring tests/audit separately and regenerate current probes.
-- [ ] Browser-check both desktop sizes, mouse input and round flow; verify all seven source/build/dev/preview assets.
+- [x] Browser-verified the shared reference, first-click holds/switching, live 50%-height/25-points-per-second relationship, pause/resume, natural 60-second results in both levels, comparison and retry reset. Board/reference fit 1280x600 and 1024x768 without scrolling; compact short-window spacing preserves the introduction. Console is clean. All seven source/build/dev/preview assets match. Screenshots: .qa/quadratic-reference-1280x600.jpg, quadratic-reference-1024x768.jpg and quadratic-level2-reference.jpg. Player tab preserved; refresh to load the new rules.
 - [ ] Human-playtest whether the new curve communicates the intended lesson; scripted probes do not prove balance or strategy optimality.
 
 ## Game introduction — 3 November 2026

@@ -93,6 +93,7 @@ dialog::backdrop { background: #172c24a6; backdrop-filter: blur(4px); }
 .result-comparison { padding: 12px 0; margin-bottom: 12px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .result-comparison h3 { font-size: 12px; font-weight: 500; color: var(--muted); margin: 0 0 6px; }
 .result-comparison p { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
+.result-comparison .comparison-message { font-size: 13px; font-weight: 400; line-height: 1.4; color: var(--green); margin-bottom: 12px; }
 .result-comparison table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
 .result-comparison th, .result-comparison td { padding: 4px 0; text-align: right; }
 .result-comparison tbody th { text-align: left; font-weight: 400; color: var(--muted); }

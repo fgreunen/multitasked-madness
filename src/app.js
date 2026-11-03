@@ -1,15 +1,12 @@
-import { Game, CONFIG, contributionRate } from './game.js';
+import { PageSession, CONFIG, contributionRate } from './game.js';
 import { contributionChartData } from './contribution-chart.js';
 
 const $ = id => document.getElementById(id);
-const game = new Game();
+const session = new PageSession();
+const game = session.game;
 let lastTime = performance.now();
 let heldInput = null;
 let resultsShown = false;
-// Unlock progression lasts for this open page, including retries/level changes.
-let level2Unlocked = false;
-let level1History = [];
-let level1Focus = null;
 
 function displayContribution(value) {
   return String(Math.round(value * CONFIG.contributionDisplayScale));
@@ -28,7 +25,7 @@ $('contribution-guide').textContent = [0.25, 0.5, 0.75, 1].map(fraction =>
   `${Math.round(fraction * CONFIG.maximumProgress)}% → ${displayContribution(contributionRate(fraction * CONFIG.maximumProgress))} pts/s`).join(' · ');
 
 function synchronizeClock(now = performance.now()) {
-  game.advance(Math.max(0, (now - lastTime) / 1000));
+  session.advance(Math.max(0, (now - lastTime) / 1000));
   lastTime = now;
 }
 
@@ -120,11 +117,9 @@ $('pause').addEventListener('click', () => {
   render();
 });
 
-function chooseLevel(level) {
-  if (![1, 2].includes(level) || (level === 2 && !level2Unlocked)
-    || !['ready', 'ended'].includes(game.status) || document.hidden) return false;
+function chooseLevel(level = game.level) {
+  if (document.hidden || !session.prepareRound(level)) return false;
   clearHold();
-  game.reset(level);
   resultsShown = false;
   lastTime = performance.now();
   $('results').close();
@@ -135,19 +130,11 @@ function chooseLevel(level) {
 $('level-1').addEventListener('click', () => chooseLevel(1));
 $('level-2').addEventListener('click', () => chooseLevel(2));
 $('next-level').addEventListener('click', () => chooseLevel(2));
-$('retry').addEventListener('click', () => {
-  clearHold();
-  game.reset();
-  resultsShown = false;
-  lastTime = performance.now();
-  $('results').close();
-  render();
-  controls[0].button.focus();
-});
+$('retry').addEventListener('click', () => chooseLevel());
 $('results').addEventListener('cancel', event => event.preventDefault());
 
 function drawHistory(prefix) {
-  const comparison = game.level === 2 ? level1History : [];
+  const comparison = game.level === 2 ? session.level1History : [];
   const chart = contributionChartData(game.history, game.elapsed, game.contribution, comparison);
   $(`${prefix}-line`).setAttribute('d', chart.line);
   $(`${prefix}-area`).setAttribute('d', chart.area);
@@ -158,7 +145,7 @@ function drawHistory(prefix) {
 }
 
 function drawComparison() {
-  const baseline = level1History.at(-1);
+  const baseline = session.level1History.at(-1);
   const visible = game.level === 2 && Boolean(baseline);
   $('result-comparison').hidden = !visible;
   $('results').classList.toggle('has-comparison', visible);
@@ -170,14 +157,13 @@ function drawComparison() {
   const percent = baseline.contribution > 0 ? Math.round(Math.abs(difference) / baseline.contribution * 100) : null;
   $('comparison-change').textContent = same ? 'Same contribution · 0 points difference'
     : `${points} ${difference > 0 ? 'more' : 'fewer'} · ${percent === null ? 'Level 1 scored zero' : `${percent === 0 ? '<1' : percent}% ${difference > 0 ? 'higher' : 'lower'}`}`;
+  $('comparison-message').textContent = same ? 'Your contribution was the same in both levels.'
+    : difference > 0 ? 'WIP limit seems to work for you!'
+    : 'You contributed more without the WIP limit this time.';
   $('comparison-level1-total').textContent = displayContribution(baseline.contribution);
   $('comparison-level2-total').textContent = displayContribution(game.contribution);
   $('comparison-level1-rate').textContent = displayContribution(baseline.contribution / CONFIG.roundSeconds);
   $('comparison-level2-rate').textContent = displayContribution(game.contribution / CONFIG.roundSeconds);
-  $('comparison-level1-switches').textContent = String(level1Focus?.switches ?? 0);
-  $('comparison-level2-switches').textContent = String(game.switches);
-  $('comparison-level1-focus').textContent = `${(level1Focus?.averageFocusSeconds ?? 0).toFixed(1)}s`;
-  $('comparison-level2-focus').textContent = `${game.averageFocusSeconds.toFixed(1)}s`;
 }
 
 function render() {
@@ -185,10 +171,10 @@ function render() {
   const running = game.status === 'running';
   const betweenRounds = ['ready', 'ended'].includes(game.status);
   $('level-1').disabled = !betweenRounds;
-  $('level-2').disabled = !betweenRounds || !level2Unlocked;
+  $('level-2').disabled = !betweenRounds || !session.level2Unlocked;
   $('level-1').setAttribute('aria-pressed', String(game.level === 1));
   $('level-2').setAttribute('aria-pressed', String(game.level === 2));
-  $('level-2').title = level2Unlocked ? `WIP limit: ${CONFIG.level2Columns} columns` : 'Complete Level 1 to unlock';
+  $('level-2').title = session.level2Unlocked ? `WIP limit: ${CONFIG.level2Columns} columns` : 'Complete Level 1 to unlock';
   $('contribution').textContent = displayContribution(game.contribution);
   $('rate').textContent = `Contribution per second: +${displayContribution(game.rate)}`;
   $('timer').textContent = formatTime(game.remaining);
@@ -224,13 +210,6 @@ function render() {
   if (game.status === 'ended' && !resultsShown) {
     resultsShown = true;
     clearHold();
-    if (game.level === 1 && game.elapsed === CONFIG.roundSeconds) {
-      level2Unlocked = true;
-      level1History = game.history.map(point => ({ ...point }));
-      level1Focus = { switches: game.switches, averageFocusSeconds: game.averageFocusSeconds };
-      $('level-2').disabled = false;
-      $('level-2').title = `WIP limit: ${CONFIG.level2Columns} columns`;
-    }
     $('result-title').textContent = `Level ${game.level} complete.`;
     $('next-level').hidden = game.level !== 1;
     $('result-total').textContent = displayContribution(game.contribution);

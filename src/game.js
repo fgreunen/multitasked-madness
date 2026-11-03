@@ -133,3 +133,29 @@ export class Game {
   get rate() { return this.columns.reduce((sum, column) => sum + contributionRate(column.progress), 0); }
   get remaining() { return Math.max(0, CONFIG.roundSeconds - this.elapsed); }
 }
+
+// Progression lasts for one open page; Game continues to own each round's rules.
+export class PageSession {
+  #game = new Game();
+  #level1History = Object.freeze([]);
+
+  get game() { return this.#game; }
+  get level1History() { return this.#level1History; }
+  get level2Unlocked() { return this.#level1History.length > 0; }
+
+  // Retry defaults to the current level. Neither action can interrupt a round.
+  prepareRound(level = this.game.level) {
+    if (![1, 2].includes(level) || (level === 2 && !this.level2Unlocked)
+      || !['ready', 'ended'].includes(this.game.status)) return false;
+    this.game.reset(level);
+    return true;
+  }
+
+  advance(seconds) {
+    const wasRunning = this.game.status === 'running';
+    this.game.advance(seconds);
+    if (wasRunning && this.game.status === 'ended' && this.game.level === 1) {
+      this.#level1History = Object.freeze(this.game.history.map(point => Object.freeze({ ...point })));
+    }
+  }
+}

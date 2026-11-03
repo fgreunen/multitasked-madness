@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
-import { Game, CONFIG, contributionRate } from '../src/game.js';
+import { PageSession, CONFIG, contributionRate } from '../src/game.js';
 import { contributionChartData } from '../src/contribution-chart.js';
 
 export async function app() {
@@ -27,11 +27,11 @@ export async function app() {
   document.getElementById=id=>{if(!elements.has(id))elements.set(id,new Element());return elements.get(id);};
   document.createElement=()=>new Element();
   document.addEventListener=window.addEventListener.bind(window);
-  const context=vm.createContext({document,window,performance:{now:()=>clock.now},requestAnimationFrame(){},Game,CONFIG,contributionRate,contributionChartData});
+  const context=vm.createContext({document,window,performance:{now:()=>clock.now},requestAnimationFrame(){},PageSession,CONFIG,contributionRate,contributionChartData});
   const source=(await readFile(new URL('../src/app.js',import.meta.url),'utf8')).replace(/^import .*;\r?\n/gm,'');
   vm.runInContext(source,context);
   const run=code=>vm.runInContext(code,context);
-  return {elements,clock,document,window,run,get game(){return run('game');},
+  return {elements,clock,document,window,run,get game(){return run('game');},get session(){return run('session');},
     button:index=>run(`controls[${index}].button`),
     down(index,id=1,button=0){this.button(index).dispatch('pointerdown',{pointerId:id,button});},
     up(id=1){window.dispatch('pointerup',{pointerId:id});},
